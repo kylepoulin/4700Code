@@ -21,19 +21,20 @@ numAtoms = (LAtoms^2)/2;
 %x(nAtoms + 1:nAtoms+LAtoms) = xp-L/2;
 %y(nAtoms + 1:nAtoms+LAtoms) = yp(1)-W/2;
 yp = Y0;
-xp = 1;
-index =0;
+xp = 0;
+index =1;
 
 for i = LAtoms:-1:1
     xindex = X0;
     for j = 1:i
-       index = index +1;
-       xindex = xp*(j-1)*AtomSpacing;
+       
+       xindex = xp+(j-1)*AtomSpacing;
        x(nAtoms + index) = xindex;
        y(nAtoms + index) = yp;
+       index = index +1;
     end
-    xp = xp+0.5;
-    yp = yp + AtomSpacing;
+    xp = xp+0.5*AtomSpacing;
+    yp = yp + 2*AtomSpacing;
     %x(nAtoms + i * LAtoms + 1:nAtoms + (i + 1) * LAtoms) = xp - L / 2;
     %y(nAtoms + i * LAtoms + 1:nAtoms + (i + 1) * LAtoms) = yp(i + 1) - W / 2;
 end
