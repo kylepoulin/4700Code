@@ -4,7 +4,7 @@ ny = 50;
 deltaxy = 1;
 
 G = sparse(nx*ny);
-B = zeros(1,nx*ny);
+
 
 
 for i = 1:nx
@@ -33,9 +33,9 @@ for i = 1:nx
     end   
 end
 
-[E,D] = eigs(G,9,'SM');
+[E,D] = eigs(G,9,'SM')
 
-V = zeros(50,50,9);
+V = zeros(nx,ny,9);
 
 for i= 1:9
     V(:,:,i) = reshape(E(:,i), nx, ny);
